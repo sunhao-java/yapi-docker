@@ -1,6 +1,6 @@
 #! /bin/sh
 cd ${VENDORS}
-if [ ! -e "init.lock" ]
+if [ ! -e "${HOME}/init.lock" ]
 then
 	sed -i "s/DIY-PORT/"${PORT}"/g" ${HOME}/config.json
 	sed -i "s/DIY-AC/"${ADMIN_EMAIL}"/g" ${HOME}/config.json
@@ -11,7 +11,7 @@ then
 	sed -i "s/DIY-DB-PWD/"${DB_PWD}"/g" ${HOME}/config.json
 
 	_EMAIL_ENABLE="false"
-	if [ "true" -e "${EMAIL_ENABLE}" ]
+	if [ "true" == "${EMAIL_ENABLE}" ]
 	then
 		_EMAIL_ENABLE="true"
 	fi
