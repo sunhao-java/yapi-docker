@@ -27,7 +27,7 @@ RUN ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
 	cd vendors && \
 	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
 	git checkout v${YAPI_VERSION} && \
-	npm install --production \
+	npm install --production && \
 	chmod +x /bin/entrypoint.sh
 
 EXPOSE ${PORT}
