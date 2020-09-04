@@ -1,9 +1,22 @@
 {
    "port": "DIY-PORT",
    "adminAccount": "DIY-AC",
+   "timeout":120000,
    "db": {
-      "servername": "DIY-DB-SERVER",
+      "servername": "DIY-DB-HOST",
       "DATABASE": "DIY-DB-NAME",
-      "port": "DIY-DB-PORT"
+      "port": "DIY-DB-PORT",
+      "user": "DIY-DB-USER",
+      "pass": "DIY-DB-PWD"
+   },
+   "mail": {
+     "enable": "DIY-MAIL-ENABLE",
+     "host": "DIY-MAIL-HOST",
+     "port": "DIY-MAIL-PORT",
+     "from": "DIY-MAIL-FROM",
+     "auth": {
+       "user": "DIY-MAIL-USER",
+       "pass": "DIY-MAIL-PWD"
+     }
    }
 }

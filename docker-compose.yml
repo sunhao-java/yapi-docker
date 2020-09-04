@@ -1,37 +1,13 @@
 version: '2.1'
 services:
   yapi:
-    build: ./
+    image: sunhao-java/yapi
     container_name: yapi
-    environment:
-      - VERSION=1.9.2
-      - LOG_PATH=/tmp/yapi.log
-      - HOME=/home
-      - PORT=3000
-      - ADMIN_EMAIL=sunhao.java@gmail.com
-      - DB_SERVER=mongo
-      - DB_NAME=yapi
-      - DB_PORT=27017
     restart: always
     ports:
       - 3000:3000
     volumes:
-      - ~/data/yapi/log/yapi.log:/home/vendors/log
-    depends_on:
-      - mongo
-    entrypoint: "bash /wait-for-it.sh mongo:27017 -- entrypoint.sh"
-    networks:
-      - back-net
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
-    ports:
-      - 27017:27017
-    volumes:
-      - ~/data/yapi/mongodb:/data/db
-    networks:
-      - back-net
-networks:
-  back-net:
-    external: true
+      - ./yapi.log:/home/vendors/log
+    env_file:
+      - .env
+  

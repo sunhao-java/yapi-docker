@@ -1,36 +1,34 @@
-FROM node:10.22.0-jessie
-MAINTAINER sunhao<sunhao.java@gmail.com>
-ENV VERSION 	1.9.2
-ENV HOME        "/home"
-ENV PORT        3000
-ENV ADMIN_EMAIL "sunhao.java@gmail.com"
-ENV DB_SERVER 	"mongo"
-ENV DB_NAME 	"yapi"
-ENV DB_PORT 	27017
-ENV VENDORS 	${HOME}/vendors
-ENV GIT_URL     https://github.com/YMFE/yapi.git
-ENV GIT_MIRROR_URL     https://gitee.com/mirrors/YApi.git
+FROM node:13.13.0-stretch
 
-WORKDIR ${HOME}/
+ENV YAPI_VERSION 	1.9.2
+ENV HOME        	"/home"
+ENV PORT        	3000
+ENV ADMIN_EMAIL 	"sunhao.java@gmail.com"
+ENV DB_HOST	 		"localhost"
+ENV DB_NAME 		"yapi"
+ENV DB_PORT 		27017
+ENV DB_USER			"yapi"
+ENV DB_PWD			"yapi"
+ENV EMAIL_ENABLE	"false"
+ENV VENDORS 		${HOME}/vendors
+ENV GIT_URL     	https://github.com/YMFE/yapi.git
+ENV GIT_MIRROR_URL  https://gitee.com/mirrors/YApi.git
 
-COPY entrypoint.sh /bin
-COPY config.json ${HOME}
-COPY wait-for-it.sh /
+# set pwd to yapi home dir
+WORKDIR /home
 
-RUN rm -rf node && \
-    ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
+# install nodejs
+RUN ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
     if [ $ret -ne 0 ]; then \
         GIT_URL=${GIT_MIRROR_URL} && npm config set registry https://registry.npm.taobao.org; \
     fi; \
-    echo ${GIT_URL} && \
+	echo ${GIT_URL} && \
 	git clone ${GIT_URL} vendors && \
 	cd vendors && \
-	git fetch origin  v${VERSION}:v${VERSION} && \
-	git checkout v${VERSION} && \
-	npm install -g node-gyp yapi-cli && \
-	npm install --production && \
- 	chmod +x /bin/entrypoint.sh && \
- 	chmod +x /wait-for-it.sh
+	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
+	git checkout v${YAPI_VERSION} && \
+	npm install --production \
+	chmod +x /bin/entrypoint.sh
 
 EXPOSE ${PORT}
 ENTRYPOINT ["entrypoint.sh"]
