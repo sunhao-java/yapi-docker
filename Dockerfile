@@ -7,11 +7,6 @@ ARG YAPI_VERSION
 ENV HOME        	"/home"
 ENV PORT        	3000
 ENV ADMIN_EMAIL 	"sunhao.java@gmail.com"
-ENV DB_HOST	 		"localhost"
-ENV DB_NAME 		"yapi"
-ENV DB_PORT 		27017
-ENV DB_USER			"yapi"
-ENV DB_PWD			"yapi"
 ENV EMAIL_ENABLE	"false"
 ENV VENDORS 		${HOME}/vendors
 ENV GIT_URL     	https://github.com/YMFE/yapi.git

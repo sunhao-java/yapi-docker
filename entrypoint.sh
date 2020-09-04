@@ -14,12 +14,12 @@ then
 	if [[ "true" == "${EMAIL_ENABLE}" ]]; then
 		_EMAIL_ENABLE="true"
 	fi
-	sed -i "s/DIY-MAIL-ENABLE/"${_EMAIL_ENABLE}"/g" ${HOME}/config.json
-	sed -i "s/DIY-MAIL-HOST/"${EMAIL_HOST}"/g" ${HOME}/config.json
-	sed -i "s/DIY-MAIL-PORT/"${EMAIL_PORT}"/g" ${HOME}/config.json
-	sed -i "s/DIY-MAIL-FROM/"${EMAIL_FROM}"/g" ${HOME}/config.json
-	sed -i "s/DIY-MAIL-USER/"${EMAIL_USER}"/g" ${HOME}/config.json
-	sed -i "s/DIY-MAIL-PWD/"${EMAIL_PWD}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-ENABLE/"${_MAIL_ENABLE}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-HOST/"${MAIL_HOST}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-PORT/"${MAIL_PORT}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-FROM/"${MAIL_FROM}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-USER/"${MAIL_USER}"/g" ${HOME}/config.json
+	sed -i "s/DIY-MAIL-PWD/"${MAIL_PWD}"/g" ${HOME}/config.json
 
 	cp ${HOME}/config.json ${VENDORS}
 	cd ${VENDORS}
