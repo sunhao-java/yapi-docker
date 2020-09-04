@@ -10,9 +10,9 @@ then
 	sed -i "s/DIY-DB-USER/"${DB_USER}"/g" ${HOME}/config.json
 	sed -i "s/DIY-DB-PWD/"${DB_PWD}"/g" ${HOME}/config.json
 
-	_EMAIL_ENABLE="false"
-	if [[ "true" == "${EMAIL_ENABLE}" ]]; then
-		_EMAIL_ENABLE="true"
+	_MAIL_ENABLE="false"
+	if [[ "true" == "${MAIL_ENABLE}" ]]; then
+		_MAIL_ENABLE="true"
 	fi
 	sed -i "s/DIY-MAIL-ENABLE/"${_MAIL_ENABLE}"/g" ${HOME}/config.json
 	sed -i "s/DIY-MAIL-HOST/"${MAIL_HOST}"/g" ${HOME}/config.json
