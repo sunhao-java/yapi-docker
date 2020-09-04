@@ -1,6 +1,9 @@
 FROM node:13.13.0-stretch
+LABEL maintainer=sunhao<sunhao.java@gmail.com>
 
-ENV YAPI_VERSION 	1.9.2
+# YAPI的版本号
+ARG YAPI_VERSION
+
 ENV HOME        	"/home"
 ENV PORT        	3000
 ENV ADMIN_EMAIL 	"sunhao.java@gmail.com"

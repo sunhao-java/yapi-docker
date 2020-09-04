@@ -11,7 +11,7 @@ then
 	sed -i "s/DIY-DB-PWD/"${DB_PWD}"/g" ${HOME}/config.json
 
 	_EMAIL_ENABLE="false"
-	if [[ "true" -e "${EMAIL_ENABLE}" ]]
+	if [ "true" -e "${EMAIL_ENABLE}" ]
 	then
 		_EMAIL_ENABLE="true"
 	fi
