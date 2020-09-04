@@ -15,7 +15,10 @@ ENV GIT_URL     	https://github.com/YMFE/yapi.git
 ENV GIT_MIRROR_URL  https://gitee.com/mirrors/YApi.git
 
 # set pwd to yapi home dir
-WORKDIR /home
+WORKDIR ${HOME}
+
+COPY entrypoint.sh /bin
+COPY config.json ${HOME}
 
 # install nodejs
 RUN ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
