@@ -1,8 +1,6 @@
 <h2 align="center">Docker for YApi</h2>
 <p align="center">一键部署YApi</p>
 
-Fork From JimCY [[me@jinfeijie.cn]](https://github.com/jinfeijie/yapi)
-
 ## ⚠️注意
 ⚠️注意：本仓库目前只支持安装，暂不支持升级，请知晓。如需升级请备份mongoDB内的数据。
 
@@ -10,81 +8,73 @@ Fork From JimCY [[me@jinfeijie.cn]](https://github.com/jinfeijie/yapi)
 默认密码是：`ymfe.org`，安装成功后进入后台修改
 
 ## 可修改变量
-| 环境变量       | 默认值         | 建议         |
-| ------------- |:-------------:|:-----------:|
-| VERSION | 1.9.2  | 可以修改成yapi已发布的版本   |
-| HOME | /home | 可修改 |  
-| PORT | 3000  | 可修改 | 
-| ADMIN_EMAIL | sunhao.java@gmail.com  | 建议修改 | 
-| DB_SERVER | mongo(127.0.0.1)  | 不建议修改 |
-| DB_NAME | yapi  | 不建议修改 |
-| DB_PORT | 27017 | 不建议修改|
-| VENDORS | ${HOME}/vendors | 不建议修改  | 
+| 环境变量       | 默认值         | 描述         | 是否必填  |
+| ------------- |:-------------:|:-----------:|:----------:|
+| HOME | /home | yapi部署在容器中的目录 | 否 |
+| PORT | 3000  | yapi在容器内的端口 | 否 |
+| ADMIN_EMAIL | sunhao.java@gmail.com  | 默认管理员账号 | 否 |
+| DB_HOST | -  | MongoDB地址 | <span style="color: red;"> (*) 是 </span> |
+| DB_NAME | -  | 使用的数据库名称 | <span style="color: red;"> (*) 是 </span> |
+| DB_PORT | - | MongoDB端口 | <span style="color: red;"> (*) 是 </span> |
+| DB_USER | - | MongoDB用户名 | <span style="color: red;"> (*) 是 </span> |
+| DB_PWD | - | MongoDB密码 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_ENABLE | false | 是否启用邮箱 | 否 |
+| MAIL_HOST | - | 邮箱smtp地址 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_PORT | - | 邮箱smtp端口 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_FROM | - | 发件人 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_USER | - | 发件人账号 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_PWD | - | 发件人账号密码 | <span style="color: red;"> (*) 是 </span> |
 
 ## docker-compose 部署
+docker-compose.yml
 ```
 version: '2.1'
 services:
   yapi:
-    build: ./
+    image: sunhao-java/yapi:1.9.2
     container_name: yapi
-    environment:
-      - VERSION=1.9.2
-      - LOG_PATH=/tmp/yapi.log
-      - HOME=/home
-      - PORT=3000
-      - ADMIN_EMAIL=sunhao.java@gmail.com
-      - DB_SERVER=mongo
-      - DB_NAME=yapi
-      - DB_PORT=27017
     restart: always
-    ports:
-      - 3000:3000
     volumes:
-      - ~/data/yapi/log/yapi.log:/home/vendors/log
-    depends_on:
-      - mongo
-    entrypoint: "bash /wait-for-it.sh mongo:27017 -- entrypoint.sh"
-    networks:
-      - back-net
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
+      - ./yapi.log:/home/vendors/log
+    env_file:
+      - .env
     ports:
-      - 27017:27017
-    volumes:
-      - ~/data/yapi/mongodb:/data/db
-    networks:
-      - back-net
-networks:
-  back-net:
-    external: true
+      - "xxxx:3000"
 ```
-
-## Nginx 配置
+.env
 ```
-server {
-    listen     80;
-    server_name your.domain;
-    keepalive_timeout   70;
-
-    location / {
-        proxy_pass http://yapi:3000;
-    }
-    location ~ /\. {
-        deny all;
-    }
-}
+# yapi的工作目录
+HOME=/home
+# yapi端口
+PORT=3000
+# 初始账号
+ADMIN_EMAIL=sunhao.java@gmail.com
+# 数据库host
+DB_HOST=xxxxx
+# 数据库名
+DB_NAME=yapi
+# 数据库端口
+DB_PORT=00000
+# 数据库用户名
+DB_USER=yapi
+# 数据库密码
+DB_PWD=yapi
+# 是否启用邮箱
+MAIL_ENABLE=true
+# 邮箱smtp地址
+MAIL_HOST=xxxxxx
+# 邮箱smtp端口
+MAIL_PORT=25
+# 发件人
+MAIL_FROM=xxx@xxx.com
+# 发件人账号
+MAIL_USER=xxx@xxx.com
+# 发件人密码
+MAIL_PWD=xxxxxx
 ```
 
 ## 启动方法
-
-1. 修改`docker-compose.yml`文件里面相关参数
-
-2. 创建network：`docker network create back-net`
-
-3. 启动服务：`docker-compose up -d`
+1. 启动服务：`docker-compose up -d`
 
 
 ## 其他
