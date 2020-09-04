@@ -10,12 +10,6 @@ then
 	mv ${HOME}/config.json ${VENDORS}
 	cp ${VENDORS}/config.json ${HOME}
 	cp ${VENDORS}/config.json ${HOME}/../
-	# sed -i "s/DIY-PORT/3000/g" config.json
-	# sed -i "s/DIY-AC/me@jinfeijie.cn/g" ${VENDORS}/config.json
-	# sed -i "s/DIY-DB-SERVER/mongo/g" ${VENDORS}/config.json
-	# sed -i "s/DIY-DB-NAME/yapi/g" ${VENDORS}/config.json
-	# sed -i "s/DIY-DB-PORT/27017/g" ${VENDORS}/config.json
-	# yapi install -v 1.5.6
 	cd ${VENDORS}
 	git fetch origin v${VERSION}:v${VERSION}
 	git checkout v${VERSION}
