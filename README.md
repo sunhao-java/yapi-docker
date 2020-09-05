@@ -19,11 +19,11 @@
 | DB_USER | - | MongoDB用户名 | <span style="color: red;"> (*) 是 </span> |
 | DB_PWD | - | MongoDB密码 | <span style="color: red;"> (*) 是 </span> |
 | MAIL_ENABLE | false | 是否启用邮箱 | 否 |
-| MAIL_HOST | - | 邮箱smtp地址 | <span style="color: red;"> (*) 是 </span> |
-| MAIL_PORT | - | 邮箱smtp端口 | <span style="color: red;"> (*) 是 </span> |
-| MAIL_FROM | - | 发件人 | <span style="color: red;"> (*) 是 </span> |
-| MAIL_USER | - | 发件人账号 | <span style="color: red;"> (*) 是 </span> |
-| MAIL_PWD | - | 发件人账号密码 | <span style="color: red;"> (*) 是 </span> |
+| MAIL_HOST | - | 邮箱smtp地址 | 否 |
+| MAIL_PORT | - | 邮箱smtp端口 | 否 |
+| MAIL_FROM | - | 发件人 | 否 |
+| MAIL_USER | - | 发件人账号 | 否 |
+| MAIL_PWD | - | 发件人账号密码 | 否 |
 
 ## docker-compose 部署
 docker-compose.yml
