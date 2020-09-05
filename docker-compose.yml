@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   yapi:
-    image: sunhao-java/yapi
+    image: sunhaojava/yapi
     container_name: yapi
     restart: always
     ports:

@@ -31,7 +31,7 @@ docker-compose.yml
 version: '2.1'
 services:
   yapi:
-    image: sunhao-java/yapi:1.9.2
+    image: sunhaojava/yapi:1.9.2
     container_name: yapi
     restart: always
     volumes:
@@ -76,6 +76,9 @@ MAIL_PWD=xxxxxx
 ## 启动方法
 1. 启动服务：`docker-compose up -d`
 
+## 如何构建镜像
+1. ./build.sh
+2. 如果想改变YAPI的版本号，请修改此文件中的`YAPI_VERSION`的值
 
 ## 其他
 📧联系[@sunhao.java](mailto:sunhao.java@gmail.com)
