@@ -86,6 +86,11 @@ MAIL_PWD=xxxxxx
 1. `./build.sh 1.9.2`
 2. 后面的参数是YAPI的版本号
 
+## 如何找到该镜像
+1. 我发布在docker-hub上
+2. 地址[sunhaojava/yapi](https://hub.docker.com/r/sunhaojava/yapi)
+3. get it via `docker pull sunhaojava/yapi`
+
 ## 其他
 📧联系[@sunhao.java](mailto:sunhao.java@gmail.com)
 
