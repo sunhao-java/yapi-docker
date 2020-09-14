@@ -77,8 +77,8 @@ MAIL_PWD=xxxxxx
 1. 启动服务：`docker-compose up -d`
 
 ## 如何构建镜像
-1. ./build.sh
-2. 如果想改变YAPI的版本号，请修改此文件中的`YAPI_VERSION`的值
+1. `./build.sh 1.9.2`
+2. 后面的参数是YAPI的版本号
 
 ## 其他
 📧联系[@sunhao.java](mailto:sunhao.java@gmail.com)
