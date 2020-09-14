@@ -13,6 +13,8 @@
 | HOME | /home | yapi部署在容器中的目录 | 否 |
 | PORT | 3000  | yapi在容器内的端口 | 否 |
 | ADMIN_EMAIL | sunhao.java@gmail.com  | 默认管理员账号 | 否 |
+| NOTIFY_UPGRADE | true  | 开启版本通知功能 | 否 |
+| DISABLE_REGISTER | false  | 禁止用户注册 yapi 平台 | 否 |
 | DB_HOST | -  | MongoDB地址 | <span style="color: red;"> (*) 是 </span> |
 | DB_NAME | -  | 使用的数据库名称 | <span style="color: red;"> (*) 是 </span> |
 | DB_PORT | - | MongoDB端口 | <span style="color: red;"> (*) 是 </span> |
@@ -49,6 +51,10 @@ HOME=/home
 PORT=3000
 # 初始账号
 ADMIN_EMAIL=sunhao.java@gmail.com
+# 版本通知
+NOTIFY_UPGRADE=true
+# 禁止注册
+DISABLE_REGISTER=true
 # 数据库host
 DB_HOST=xxxxx
 # 数据库名

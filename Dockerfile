@@ -5,10 +5,6 @@ LABEL maintainer=sunhao<sunhao.java@gmail.com>
 ARG YAPI_VERSION
 
 ENV HOME        	"/home"
-ENV PORT        	3000
-ENV ADMIN_EMAIL 	"sunhao.java@gmail.com"
-ENV EMAIL_ENABLE	"false"
-ENV VENDORS 		${HOME}/vendors
 ENV GIT_URL     	https://github.com/YMFE/yapi.git
 ENV GIT_MIRROR_URL  https://gitee.com/mirrors/YApi.git
 
@@ -19,7 +15,12 @@ COPY entrypoint.sh /bin
 COPY config.json ${HOME}
 
 # install nodejs
-RUN ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
+RUN export PORT=3000 && \
+	export ADMIN_EMAIL=sunhao.java@gmail.com && \
+	export EMAIL_ENABLE=false && \
+	export NOTIFY_UPGRADE=true && \
+	export DISABLE_REGISTER=false && \
+	ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
     if [ $ret -ne 0 ]; then \
         GIT_URL=${GIT_MIRROR_URL} && npm config set registry https://registry.npm.taobao.org; \
     fi; \
