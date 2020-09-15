@@ -21,8 +21,7 @@ RUN export PORT=3000 && \
 	export NOTIFY_UPGRADE=true && \
 	export DISABLE_REGISTER=false && \
 	# 安装 yapi-cli 和 ykit
-	npm install -g --registry https://registry.npm.taobao.org yapi-cli ykit && \
-	npm install --registry https://registry.npm.taobao.org --production && \
+	npm install -g --registry https://registry.npm.taobao.org ykit && \
 	# yapi源码仓库
 	ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
     if [ $ret -ne 0 ]; then \
@@ -34,9 +33,12 @@ RUN export PORT=3000 && \
 	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
 	git checkout v${YAPI_VERSION} && \
 	# 钉钉插件
-	yapi plugin --name yapi-plugin-dingding && \
+	npm install --registry https://registry.npm.taobao.org yapi-plugin-dingding && \
 	# yapi自定义导入swagger数据
-	yapi plugin --name yapi-plugin-import-swagger-customize && \
+	npm install --registry https://registry.npm.taobao.org yapi-plugin-import-swagger-customize && \
+	# 安装依赖
+	npm install --registry https://registry.npm.taobao.org --production && \
+	ykit pack -m && \
 	chmod +x /bin/entrypoint.sh
 
 EXPOSE ${PORT}
