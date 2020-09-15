@@ -4,7 +4,7 @@ LABEL maintainer=sunhao<sunhao.java@gmail.com>
 # YAPI的版本号
 ARG YAPI_VERSION
 
-ENV HOME        	"/home"
+ENV HOME        	"/home/yapi"
 ENV GIT_URL     	https://github.com/YMFE/yapi.git
 ENV GIT_MIRROR_URL  https://gitee.com/mirrors/YApi.git
 
@@ -20,8 +20,6 @@ RUN export PORT=3000 && \
 	export EMAIL_ENABLE=false && \
 	export NOTIFY_UPGRADE=true && \
 	export DISABLE_REGISTER=false && \
-	# 安装 yapi-cli 和 ykit
-	npm install -g --registry https://registry.npm.taobao.org ykit && \
 	# yapi源码仓库
 	ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l` && \
     if [ $ret -ne 0 ]; then \
@@ -32,11 +30,8 @@ RUN export PORT=3000 && \
 	cd vendors && \
 	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
 	git checkout v${YAPI_VERSION} && \
-	# yapi自定义导入swagger数据
-	npm install --registry https://registry.npm.taobao.org yapi-plugin-import-swagger-customize && \
 	# 安装依赖
 	npm install --registry https://registry.npm.taobao.org --production && \
-	ykit pack -m && \
 	chmod +x /bin/entrypoint.sh
 
 EXPOSE ${PORT}
