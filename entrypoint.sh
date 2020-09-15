@@ -25,13 +25,7 @@ then
 
 	cd ${HOME}/vendors
 	# 安装程序会初始化数据库索引和管理员账号，管理员账号名可在 config.json 配置
-	npm run install-server >/dev/null 2>&1
-	result=$?
-	if [ 0 != $result ]; then
-		echo "MongoDB已经被初始化，请使用之前的用户名密码登录"
-	else
-		echo "MongoDB初始化成功。默认用户名：${ADMIN_EMAIL}，密码：ymfe.org"
-    fi
+	npm run install-server
 fi
 
 node server/app.js
