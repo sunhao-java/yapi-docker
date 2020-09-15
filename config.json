@@ -1,5 +1,5 @@
 {
-    "port": "DIY-PORT",
+    "port": "3000",
     "adminAccount": "DIY-AC",
     "timeout": 120000,
     "versionNotify": "DIY-NOTIFY-UPGRADE",

@@ -10,8 +10,6 @@
 ## 可修改变量
 | 环境变量       | 默认值         | 描述         | 是否必填  |
 | ------------- |:-------------:|:-----------:|:----------:|
-| HOME | /home | yapi部署在容器中的目录 | 否 |
-| PORT | 3000  | yapi在容器内的端口 | 否 |
 | ADMIN_EMAIL | sunhao.java@gmail.com  | 默认管理员账号 | 否 |
 | NOTIFY_UPGRADE | true  | 开启版本通知功能 | 否 |
 | DISABLE_REGISTER | false  | 禁止用户注册 yapi 平台 | 否 |
@@ -46,9 +44,6 @@ services:
 .env
 ```
 # yapi的工作目录
-HOME=/home
-# yapi端口
-PORT=3000
 # 初始账号
 ADMIN_EMAIL=sunhao.java@gmail.com
 # 版本通知
