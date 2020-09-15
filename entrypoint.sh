@@ -25,6 +25,7 @@ then
 
 	_DD_ENABLED="false"
 	if  [ -n "${DD_HOST}" ] ;then
+		DD_HOST=${DD_HOST//\//\\/}
 		# 启用钉钉通知
 		sed -i "s/DIY-DD-HOST/"${DD_HOST}"/g" ${HOME}/config.json
 		_DD_ENABLED="true"
