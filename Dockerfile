@@ -32,8 +32,6 @@ RUN export PORT=3000 && \
 	cd vendors && \
 	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
 	git checkout v${YAPI_VERSION} && \
-	# 钉钉插件
-	npm install --registry https://registry.npm.taobao.org yapi-plugin-dingding && \
 	# yapi自定义导入swagger数据
 	npm install --registry https://registry.npm.taobao.org yapi-plugin-import-swagger-customize && \
 	# 安装依赖
