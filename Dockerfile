@@ -34,5 +34,6 @@ RUN export PORT=3000 && \
 	npm install --registry https://registry.npm.taobao.org --production && \
 	chmod +x /bin/entrypoint.sh
 
+VOLUME ["${HOME}"]
 EXPOSE ${PORT}
 ENTRYPOINT ["entrypoint.sh"]
