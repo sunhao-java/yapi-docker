@@ -29,7 +29,7 @@ RUN export PORT=3000 && \
 	cd vendors && \
 	git fetch origin v${YAPI_VERSION}:v${YAPI_VERSION} && \
 	git checkout v${YAPI_VERSION} && \
-	npm install --production && \
+	npm install --registry https://registry.npm.taobao.org --production && \
 	chmod +x /bin/entrypoint.sh
 
 EXPOSE ${PORT}

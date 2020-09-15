@@ -20,5 +20,13 @@
        "user": "DIY-MAIL-USER",
        "pass": "DIY-MAIL-PWD"
      }
-   }
+   },
+   "plugins": [
+      {
+        "name": "dingding",
+        "options": {
+            "host": "DIY-DD-HOST"
+        }
+      }
+    ]
 }

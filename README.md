@@ -26,6 +26,7 @@
 | MAIL_FROM | - | 发件人 | 否 |
 | MAIL_USER | - | 发件人账号 | 否 |
 | MAIL_PWD | - | 发件人账号密码 | 否 |
+| DD_HOST | - | 该值不为空，表示启用钉钉插件<br/>项目的域名，用于拼接接口的链接 | 否 |
 
 ## docker-compose 部署
 docker-compose.yml
@@ -77,6 +78,9 @@ MAIL_FROM=xxx@xxx.com
 MAIL_USER=xxx@xxx.com
 # 发件人密码
 MAIL_PWD=xxxxxx
+# 该值不为空，表示启用钉钉插件
+# 项目的域名，用于拼接接口的链接
+DD_HOST=xxx
 ```
 
 ## 启动方法

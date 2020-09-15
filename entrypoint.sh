@@ -23,8 +23,21 @@ then
 	sed -i "s/DIY-MAIL-USER/"${MAIL_USER}"/g" ${HOME}/config.json
 	sed -i "s/DIY-MAIL-PWD/"${MAIL_PWD}"/g" ${HOME}/config.json
 
+	_DD_ENABLED="false"
+	if  [ -n "${DD_HOST}" ] ;then
+		# 启用钉钉通知
+		sed -i "s/DIY-DD-HOST/"${DD_HOST}"/g" ${HOME}/config.json
+		_DD_ENABLED="true"
+	fi
+
 	cp ${HOME}/config.json ${HOME}/vendors
 	cd ${HOME}/vendors
+	
+	# 安装钉钉插件
+	if [[ "true" == "${_DD_ENABLED}" ]]; then
+		npm install --registry https://registry.npm.taobao.org yapi-plugin-dding
+	fi
+	
 	# 安装程序会初始化数据库索引和管理员账号，管理员账号名可在 config.json 配置
 	npm run install-server
 fi
